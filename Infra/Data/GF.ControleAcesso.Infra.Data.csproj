@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Domain\GF.ControleAcesso.Domain\GF.ControleAcesso.Domain.csproj" />
+    <ProjectReference Include="..\..\Domain\GF.ControleAcesso.Domain.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
