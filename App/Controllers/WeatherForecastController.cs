@@ -1,4 +1,4 @@
-using GF.ControleAcesso.Domain.Entities;
+using GF.ControleAcesso.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GF.ControleAcesso.App.Controllers;

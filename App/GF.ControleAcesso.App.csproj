@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\GF.ControleAcesso.Domain\GF.ControleAcesso.Domain.csproj" />
-    <ProjectReference Include="..\..\Service\GF.ControleAcesso.Service\GF.ControleAcesso.Service.csproj" />
+    <ProjectReference Include="..\Domain\GF.ControleAcesso.Domain.csproj" />
+    <ProjectReference Include="..\Service\GF.ControleAcesso.Service.csproj" />
   </ItemGroup>
 
 </Project>

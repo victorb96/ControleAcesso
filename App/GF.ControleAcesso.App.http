@@ -1,4 +1,4 @@
-@GF.ControleAcesso.App_HostAddress = http://localhost:5075
+@GF.ControleAcesso.App_HostAddress = http://localhost:5006
 
 GET {{GF.ControleAcesso.App_HostAddress}}/weatherforecast/
 Accept: application/json
