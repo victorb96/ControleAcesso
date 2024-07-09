@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\GF.ControleAcesso.Domain.csproj" />
     <ProjectReference Include="..\Service\GF.ControleAcesso.Service.csproj" />
+    <ProjectReference Include="..\Infra\CrossCutting\GF.ControleAcesso.Infra.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>
