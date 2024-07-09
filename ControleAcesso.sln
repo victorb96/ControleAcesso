@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.App", "Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.Domain", "Domain\GF.ControleAcesso.Domain.csproj", "{E6C2D1C0-F530-49E3-88A7-A70B906615F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.Service", "Service\GF.ControleAcesso.Service.csproj", "{7B35F327-4BCA-40C5-B0C2-AF9FBAE47B11}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{EE4EC298-F25A-4222-A9FE-A0B54CC8B033}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.Infra.Data", "Infra\Data\GF.ControleAcesso.Infra.Data.csproj", "{461F9AAC-BF92-40E1-ACD8-26ACFFE2AE51}"

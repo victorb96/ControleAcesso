@@ -6,7 +6,9 @@ INSERT INTO UsuarioPerfil (Id, Descricao)
         (3, 'Técnico')
     ON CONFLICT (Id) DO NOTHING;
 
-INSERT INTO Usuario (Nome, 
+INSERT INTO Usuario (DataCadastro,
+        Ativo,
+        Nome, 
         Cpf, 
         Cep, 
         Logradouro, 
@@ -19,7 +21,9 @@ INSERT INTO Usuario (Nome,
         Email,
         Senha,
         Celular)
-    VALUES('admin', 
+    VALUES(NOW(),
+        TRUE,
+        'admin', 
         '00000000000', 
         '00000000', 
         'Rua x', 

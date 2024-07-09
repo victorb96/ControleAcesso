@@ -1,10 +1,17 @@
+using GF.ControleAcesso.Domain.Interfaces.Repositories;
+using GF.ControleAcesso.Domain.Interfaces.Services;
+using GF.ControleAcesso.Domain.Services;
+using GF.ControleAcesso.Infra.Data;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CrossCutting.IoC;
+namespace GF.ControleAcesso.Infra.CrossCutting.IoC;
 
 public class ServiceDependency
 {
     public static void AddServiceDependency(IServiceCollection services)
     {
+        services.AddScoped<ISignInService, SignInService> ();
+
+        services.AddScoped<IUsuarioRepository, UsuarioRepository> ();
     }
 }

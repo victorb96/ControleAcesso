@@ -1,5 +1,6 @@
 using System.Text;
-using CrossCutting.IoC;
+using GF.ControleAcesso.App.AutoMapper;
+using GF.ControleAcesso.Infra.CrossCutting.IoC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -26,6 +27,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(typeof(ConfigMapping));
 
 ServiceDependency.AddServiceDependency(builder.Services);
 
