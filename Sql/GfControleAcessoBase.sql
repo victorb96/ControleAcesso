@@ -2,7 +2,7 @@ CREATE DATABASE controle_acesso;
 
 \c controle_acesso;
 
-CREATE TABLE IF NOT EXISTS UsuarioPerfil (
+CREATE TABLE IF NOT EXISTS Perfil (
     Id INTEGER PRIMARY KEY NOT NULL,
     Descricao VARCHAR(15)
 );
@@ -22,11 +22,11 @@ CREATE TABLE IF NOT EXISTS Usuario (
     UF VARCHAR(2) NOT NULL,
     Numero INTEGER NOT NULL,
     Complemento VARCHAR(200) NULL,
-    IdUsuarioPerfil INTEGER NOT NULL,
+    IdPerfil INTEGER NOT NULL,
     Email VARCHAR(200) NOT NULL,
     Senha VARCHAR(35),
     Celular VARCHAR(11),
-    CONSTRAINT FK_UsuarioPerfil_Usuario FOREIGN KEY(IdUsuarioPerfil) REFERENCES Usuario(Id)
+    CONSTRAINT FK_Perfil_Usuario FOREIGN KEY(IdPerfil) REFERENCES Perfil(Id)
 );
 
 CREATE TABLE IF NOT EXISTS Funcionalidade (

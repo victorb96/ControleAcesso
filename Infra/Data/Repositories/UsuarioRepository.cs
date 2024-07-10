@@ -3,7 +3,7 @@ using GF.ControleAcesso.Domain.Entities;
 using GF.ControleAcesso.Domain.Interfaces.Repositories;
 using Npgsql;
 
-namespace GF.ControleAcesso.Infra.Data;
+namespace GF.ControleAcesso.Infra.Data.Repositories;
 
 public class UsuarioRepository : IUsuarioRepository
 {

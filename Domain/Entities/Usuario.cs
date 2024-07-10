@@ -14,7 +14,7 @@ public class Usuario : Base
     public string UF { get; set; } = string.Empty;
     public int Numero { get; set; }
     public string Complemento { get; set; } = string.Empty;
-    public int IdUsuarioPerfil { get; set; }
+    public int IdPerfil { get; set; }
     public string Email { get; set; } = string.Empty;
     public string Senha { get; set; } = string.Empty;
     public string Celular { get; set; } = string.Empty;

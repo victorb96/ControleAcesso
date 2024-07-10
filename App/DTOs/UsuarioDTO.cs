@@ -6,9 +6,10 @@ public class UsuarioDTO
     public string Nome { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string Cpf { get; set; } = string.Empty;
-    public int IdUsuarioPerfil { get; set; }
+    public int IdPerfil { get; set; }
     public string Perfil { get; set; } = string.Empty;
     public bool Ativo { get; set; }
+    public string Token { get; set; } = string.Empty;
 }
 
 public class UsuarioSignInDTO

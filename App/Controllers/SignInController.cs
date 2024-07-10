@@ -24,6 +24,7 @@ public class SignInController : ControllerBase
     [HttpPost]
     public IActionResult SignIn(UsuarioSignInDTO request)
     {
-        return Ok(_mapper.Map<UsuarioDTO>(_signInService.SignIn(_mapper.Map<Usuario>(request))));
+        var response = _mapper.Map<UsuarioDTO>(_signInService.SignIn(_mapper.Map<Usuario>(request)));
+        return Ok(response);
     }
 }

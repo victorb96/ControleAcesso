@@ -1,7 +1,7 @@
 using System.ComponentModel;
 
 namespace GF.ControleAcesso.Domain.Enums;
-public enum EUsuarioPerfil
+public enum EPerfil
 {
     [Description("Administrador")]
     Administrador = 1,

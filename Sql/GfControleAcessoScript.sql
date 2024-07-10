@@ -1,6 +1,6 @@
 \c controle_acesso;
 
-INSERT INTO UsuarioPerfil (Id, Descricao)
+INSERT INTO Perfil (Id, Descricao)
     VALUES(1, 'Administrador'),
         (2, 'Operador'),
         (3, 'Técnico')
@@ -17,7 +17,7 @@ INSERT INTO Usuario (DataCadastro,
         UF, 
         Numero, 
         Complemento, 
-        IdUsuarioPerfil,
+        IdPerfil,
         Email,
         Senha,
         Celular)
