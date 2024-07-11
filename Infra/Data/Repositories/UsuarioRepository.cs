@@ -5,7 +5,7 @@ using Npgsql;
 
 namespace GF.ControleAcesso.Infra.Data.Repositories;
 
-public class UsuarioRepository : IUsuarioRepository
+public class UsuarioRepository : Base, IUsuarioRepository
 {
     private readonly string TABELA = "Usuario";
     private DynamicParameters parameters = new DynamicParameters();
@@ -14,7 +14,7 @@ public class UsuarioRepository : IUsuarioRepository
         parameters.Add("@email", email);
         parameters.Add("@senha", senha);
 
-        using (NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Database=controle_acesso;Port=8080;User Id=postgres;Password=^Z&yJLm=sbXnmQ[xhMtmPC&eNq7@Xou#;"))
+        using (NpgsqlConnection connection = new NpgsqlConnection(GetConnectionString()))
         {
             string sql = $@"SELECT * FROM {TABELA} WHERE Email = @email AND Senha = @senha";
             return connection.Query<Usuario>(sql, parameters).FirstOrDefault();

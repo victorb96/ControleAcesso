@@ -5,6 +5,7 @@ public class Usuario : Base
     public DateTime DataCadastro { get; set; }
     public DateTime? DataAlteracao { get; set; }
     public DateTime? DataExclusao { get; set; }
+    public bool Ativo { get; set; }
     public string Nome { get; set; } = string.Empty;
     public string Cpf { get; set; } = string.Empty;
     public string Cep { get; set; } = string.Empty;

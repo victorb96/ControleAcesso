@@ -3,7 +3,7 @@ using GF.ControleAcesso.App.DTOs;
 using GF.ControleAcesso.App.Services;
 using GF.ControleAcesso.Domain.Entities;
 using GF.ControleAcesso.Domain.Enums;
-using GF.ControleAcesso.Infra.CrossCutting.Helpers;
+using GF.ControleAcesso.Domain.Helpers;
 
 namespace GF.ControleAcesso.App.AutoMapper;
 
@@ -11,10 +11,12 @@ public class ConfigMapping : Profile
 {
     public ConfigMapping()
     {
-        CreateMap<UsuarioSignInDTO, Usuario>();
+        CreateMap<SignInRequestDTO, Usuario>();
+        CreateMap<MenuResponse, MenuDTO>();
+        CreateMap<SubMenu, SubMenuDTO>();
         CreateMap<Usuario, UsuarioDTO>()
-            .ForMember(dto => dto.Perfil, opt => opt.MapFrom(u => ((EPerfil)u.IdPerfil).GetEnumDescription()))
-            .ForMember(dto => dto.Token, opt => opt.MapFrom(u => TokenService.GerarToken(u)))
-            .ReverseMap();
+            .ForMember(dto => dto.Perfil, opt => opt.MapFrom(e => ((EPerfil)e.IdPerfil).GetEnumDescription()));
+        CreateMap<SignInResponse, SignInResponseDTO>()
+            .ForMember(dto => dto.Token, opt => opt.MapFrom(e => TokenService.GerarToken(e.Usuario)));
     }
 }

@@ -3,8 +3,8 @@ using System.Security.Claims;
 using System.Text;
 using GF.ControleAcesso.Domain.Entities;
 using GF.ControleAcesso.Domain.Enums;
-using GF.ControleAcesso.Infra.CrossCutting.Helpers;
 using Microsoft.IdentityModel.Tokens;
+using GF.ControleAcesso.Domain.Helpers;
 
 namespace GF.ControleAcesso.App.Services;
 

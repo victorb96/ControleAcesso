@@ -8,5 +8,5 @@ namespace GF.ControleAcesso.Domain.Interfaces.Services;
 
 public interface ISignInService
 {
-    Usuario SignIn(Usuario request);
+    SignInResponse SignIn(Usuario request);
 }

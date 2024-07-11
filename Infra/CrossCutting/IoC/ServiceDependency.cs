@@ -13,5 +13,6 @@ public class ServiceDependency
         services.AddScoped<ISignInService, SignInService> ();
 
         services.AddScoped<IUsuarioRepository, UsuarioRepository> ();
+        services.AddScoped<IMenuRepository, MenuRepository> ();
     }
 }

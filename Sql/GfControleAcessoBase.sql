@@ -29,9 +29,19 @@ CREATE TABLE IF NOT EXISTS Usuario (
     CONSTRAINT FK_Perfil_Usuario FOREIGN KEY(IdPerfil) REFERENCES Perfil(Id)
 );
 
+CREATE TABLE IF NOT EXISTS Menu (
+    Id INTEGER PRIMARY KEY NOT NULL,
+    Nome VARCHAR(60) NOT NULL,
+    Icone VARCHAR(20) NULL,
+    Rota VARCHAR(20) NULL,
+    IdPai INTEGER NULL
+);
+
 CREATE TABLE IF NOT EXISTS Funcionalidade (
     Id INTEGER PRIMARY KEY NOT NULL,
-    Nome VARCHAR(60)
+    Nome VARCHAR(60),
+    IdMenu INT NULL,
+    CONSTRAINT FK_Menu_Funcionalidade FOREIGN KEY(IdMenu) REFERENCES Menu(Id)
 );
 
 CREATE TABLE IF NOT EXISTS Acao (
@@ -51,13 +61,3 @@ CREATE TABLE IF NOT EXISTS UsuarioFuncionalidadeAcao (
 
 CREATE UNIQUE INDEX IDX_UsuarioFuncionalidadeAcao
 ON UsuarioFuncionalidadeAcao(IdUsuario, IdFuncionalidade, IdAcao);
-
-CREATE TABLE IF NOT EXISTS Menu (
-    Id INTEGER PRIMARY KEY NOT NULL,
-    Nome VARCHAR(60) NOT NULL,
-    Icone VARCHAR(20) NULL,
-    Rota VARCHAR(20) NULL,
-    IdPai INTEGER NULL,
-    IdFuncionalidade INTEGER NULL,
-    CONSTRAINT FK_Funcionalidade_Menu FOREIGN KEY(IdFuncionalidade) REFERENCES Funcionalidade(Id)
-);

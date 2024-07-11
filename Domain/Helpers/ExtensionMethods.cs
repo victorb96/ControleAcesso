@@ -1,5 +1,6 @@
-namespace GF.ControleAcesso.Infra.CrossCutting.Helpers;
+namespace GF.ControleAcesso.Domain.Helpers;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 public static class ExtensionMethods
 {
@@ -11,4 +12,7 @@ public static class ExtensionMethods
         
         return string.Empty;
     }
+
+    public static bool IsValidEmail(this string email)
+        => new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").IsMatch(email);
 }

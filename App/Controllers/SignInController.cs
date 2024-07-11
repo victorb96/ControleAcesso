@@ -22,9 +22,16 @@ public class SignInController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult SignIn(UsuarioSignInDTO request)
+    public IActionResult SignIn(SignInRequestDTO request)
     {
-        var response = _mapper.Map<UsuarioDTO>(_signInService.SignIn(_mapper.Map<Usuario>(request)));
-        return Ok(response);
+        try
+        {
+            var response = _mapper.Map<SignInResponseDTO>(_signInService.SignIn(_mapper.Map<Usuario>(request)));
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new {success = false, message = ex.Message});
+        }
     }
 }
