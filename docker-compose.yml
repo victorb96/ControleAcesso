@@ -1,0 +1,31 @@
+services:
+  gf-controle-acesso-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ^Z&yJLm=sbXnmQ[xhMtmPC&eNq7@Xou#
+    volumes:
+      - controle_acesso_db_data:/var/lib/postgresql/data
+      - ./Sql/GfControleAcessoBase.sql:/docker-entrypoint-initdb.d/GfControleAcessoBase.sql
+      - ./Sql/GfControleAcessoScript.sql:/docker-entrypoint-initdb.d/GfControleAcessoScript.sql
+    ports:
+      - "5432:5432"
+
+  gf-controle-acesso-api:
+    build:
+      context: .
+    environment:
+      - DB_HOST=gf-controle-acesso-db
+      - DB_NAME=controle_acesso
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PWD=^Z&yJLm=sbXnmQ[xhMtmPC&eNq7@Xou#
+      - JWT_CONTROLE_ACESSO_KEY=iQhI6ABh8Rb6TWCUpwlwC8hpzwqzFzy3
+    depends_on:
+      - gf-controle-acesso-db
+    ports:
+      - "8080:8080"
+    restart: always
+
+volumes:
+  controle_acesso_db_data:
