@@ -26,7 +26,8 @@ stages:
                 $(Build.BuildId)
                 latest
   - stage: RELEASE
-    dependsOn: [Build]
+    dependsOn:
+    - Build
     jobs:
       - job: Deploy
         steps:
