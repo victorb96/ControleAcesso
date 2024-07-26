@@ -2,13 +2,17 @@ CREATE DATABASE controle_acesso;
 
 \c controle_acesso;
 
-CREATE TABLE IF NOT EXISTS UsuarioPerfil (
+CREATE TABLE IF NOT EXISTS Perfil (
     Id INTEGER PRIMARY KEY NOT NULL,
     Descricao VARCHAR(15)
 );
 
 CREATE TABLE IF NOT EXISTS Usuario (
     Id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    DataCadastro TIMESTAMP NOT NULL,
+    DataAlteracao TIMESTAMP NULL,
+    DataExclusao TIMESTAMP NULL,
+    Ativo BOOLEAN NOT NULL DEFAULT FALSE,
     Nome VARCHAR(60) NOT NULL,
     Cpf VARCHAR(11) NOT NULL,
     Cep VARCHAR(8) NOT NULL,
@@ -18,16 +22,26 @@ CREATE TABLE IF NOT EXISTS Usuario (
     UF VARCHAR(2) NOT NULL,
     Numero INTEGER NOT NULL,
     Complemento VARCHAR(200) NULL,
-    IdUsuarioPerfil INTEGER NOT NULL,
+    IdPerfil INTEGER NOT NULL,
     Email VARCHAR(200) NOT NULL,
     Senha VARCHAR(35),
     Celular VARCHAR(11),
-    CONSTRAINT FK_UsuarioPerfil_Usuario FOREIGN KEY(IdUsuarioPerfil) REFERENCES Usuario(Id)
+    CONSTRAINT FK_Perfil_Usuario FOREIGN KEY(IdPerfil) REFERENCES Perfil(Id)
+);
+
+CREATE TABLE IF NOT EXISTS Menu (
+    Id INTEGER PRIMARY KEY NOT NULL,
+    Nome VARCHAR(60) NOT NULL,
+    Icone VARCHAR(20) NULL,
+    Rota VARCHAR(20) NULL,
+    IdPai INTEGER NULL
 );
 
 CREATE TABLE IF NOT EXISTS Funcionalidade (
     Id INTEGER PRIMARY KEY NOT NULL,
-    Nome VARCHAR(60)
+    Nome VARCHAR(60),
+    IdMenu INT NULL,
+    CONSTRAINT FK_Menu_Funcionalidade FOREIGN KEY(IdMenu) REFERENCES Menu(Id)
 );
 
 CREATE TABLE IF NOT EXISTS Acao (
@@ -47,13 +61,3 @@ CREATE TABLE IF NOT EXISTS UsuarioFuncionalidadeAcao (
 
 CREATE UNIQUE INDEX IDX_UsuarioFuncionalidadeAcao
 ON UsuarioFuncionalidadeAcao(IdUsuario, IdFuncionalidade, IdAcao);
-
-CREATE TABLE IF NOT EXISTS Menu (
-    Id INTEGER PRIMARY KEY NOT NULL,
-    Nome VARCHAR(60) NOT NULL,
-    Icone VARCHAR(20) NULL,
-    Rota VARCHAR(20) NULL,
-    IdPai INTEGER NULL,
-    IdFuncionalidade INTEGER NULL,
-    CONSTRAINT FK_Funcionalidade_Menu FOREIGN KEY(IdFuncionalidade) REFERENCES Funcionalidade(Id)
-);

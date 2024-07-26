@@ -1,12 +1,14 @@
 \c controle_acesso;
 
-INSERT INTO UsuarioPerfil (Id, Descricao)
+INSERT INTO Perfil (Id, Descricao)
     VALUES(1, 'Administrador'),
         (2, 'Operador'),
         (3, 'Técnico')
     ON CONFLICT (Id) DO NOTHING;
 
-INSERT INTO Usuario (Nome, 
+INSERT INTO Usuario (DataCadastro,
+        Ativo,
+        Nome, 
         Cpf, 
         Cep, 
         Logradouro, 
@@ -15,11 +17,13 @@ INSERT INTO Usuario (Nome,
         UF, 
         Numero, 
         Complemento, 
-        IdUsuarioPerfil,
+        IdPerfil,
         Email,
         Senha,
         Celular)
-    VALUES('admin', 
+    VALUES(NOW(),
+        TRUE,
+        'admin', 
         '00000000000', 
         '00000000', 
         'Rua x', 
@@ -33,10 +37,17 @@ INSERT INTO Usuario (Nome,
         'admin',
         '11900000000');
 
-INSERT INTO Funcionalidade (Id, Nome)
-    VALUES(1, 'Usuário'),
-        (2, 'Produto'),
-        (3, 'Serviço')
+INSERT INTO Menu (Id, Nome, Icone, Rota, IdPai)
+    VALUES(1000, 'Cadastro', null, null, null),
+        (1005, 'Usuário', null, '/usuario', 1000),
+        (1010, 'Produto', null, '/produto', 1000),
+        (1015, 'Serviço', null, '/servico', 1000)
+    ON CONFLICT (Id) DO NOTHING;
+
+INSERT INTO Funcionalidade (Id, Nome, IdMenu)
+    VALUES(1, 'Usuário', 1005),
+        (2, 'Produto', 1010),
+        (3, 'Serviço', 1015)
     ON CONFLICT (Id) DO NOTHING;
 
 INSERT INTO Acao (Id, Nome)
@@ -60,10 +71,3 @@ INSERT INTO UsuarioFuncionalidadeAcao (IdUsuario, IdFuncionalidade, IdAcao)
         (1, 3, 3),
         (1, 3, 4)
     ON CONFLICT(IdUsuario, IdFuncionalidade, IdAcao) DO NOTHING;
-
-INSERT INTO Menu (Id, Nome, Icone, Rota, IdPai, IdFuncionalidade)
-    VALUES(1000, 'Cadastro', null, null, null, null),
-        (1005, 'Usuário', null, '/usuario', 1000, 1),
-        (1010, 'Produto', null, '/produto', 1000, 2),
-        (1015, 'Serviço', null, '/servico', 1000, 3)
-    ON CONFLICT (Id) DO NOTHING;

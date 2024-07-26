@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\GF.ControleAcesso.Domain.csproj" />
-    <ProjectReference Include="..\..\Service\GF.ControleAcesso.Service.csproj" />
+    <ProjectReference Include="..\Data\GF.ControleAcesso.Infra.Data.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
