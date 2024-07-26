@@ -13,7 +13,7 @@ stages:
   - stage: Build
     displayName: Build and push image
     jobs:
-      - job: Build
+      - job:
         steps:
           - task: Docker@2
             inputs:
@@ -25,10 +25,21 @@ stages:
               tags: |
                 $(Build.BuildId)
                 latest
-  - stage: RELEASE
+  - stage: QA
     dependsOn:
     - Build
     jobs:
       - job: Deploy
         steps:
           - script: echo Deploy RELEASE
+  - stage: HML
+    dependsOn:
+    - QA
+    jobs:
+      - deployment: 
+        environment: HML
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - script: echo Deploy HML
