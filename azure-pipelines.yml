@@ -19,9 +19,18 @@ stages:
             inputs:
               containerRegistry: 'Docker Hub'
               repository: 'victorb96/gf-controle-acesso'
-              command: 'buildAndPush'
+              command: 'build'
               Dockerfile: './Dockerfile'
               buildContext: '.'
+              tags: |
+                $(Build.BuildId)
+                latest
+              arguments: '--build-arg DB_HOST=$(DB_HOST) --build-arg DB_NAME=$(DB_NAME) --build-arg DB_PORT=$(DB_PORT) --build-arg DB_USE=$(DB_USE) --build-arg DB_PWD=$(DB_PWD) --build-arg JWT_CONTROLE_ACESSO_KEY=$(JWT_CONTROLE_ACESSO_KEY)'
+          - task: Docker@2
+            inputs:
+              containerRegistry: 'Docker Hub'
+              repository: 'victorb96/gf-controle-acesso'
+              command: 'push'
               tags: |
                 $(Build.BuildId)
                 latest
