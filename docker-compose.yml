@@ -3,7 +3,7 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: ^Z&yJLm=sbXnmQ[xhMtmPC&eNq7@Xou#
+      POSTGRES_PASSWORD: pFEqHpY5TPj2NYCZwayzxAEDXjt3uHP6
     volumes:
       - controle_acesso_db_data:/var/lib/postgresql/data
       - ./Sql/GfControleAcessoBase.sql:/docker-entrypoint-initdb.d/GfControleAcessoBase.sql
@@ -19,7 +19,7 @@ services:
       - DB_NAME=controle_acesso
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PWD=^Z&yJLm=sbXnmQ[xhMtmPC&eNq7@Xou#
+      - DB_PWD=pFEqHpY5TPj2NYCZwayzxAEDXjt3uHP6
       - JWT_CONTROLE_ACESSO_KEY=iQhI6ABh8Rb6TWCUpwlwC8hpzwqzFzy3
     depends_on:
       - gf-controle-acesso-db
