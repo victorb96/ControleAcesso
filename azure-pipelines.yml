@@ -40,7 +40,15 @@ stages:
     jobs:
       - job: Deploy
         steps:
-          - script: echo Deploy RELEASE
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'Assinatura do Azure 1(26954947-37d0-4d54-bbcb-0cb38650264d)'
+              appType: 'webAppContainer'
+              WebAppName: 'gf-controle-acesso'
+              DockerNamespace: 'victorb96'
+              DockerRepository: 'gf-controle-acesso'
+              DockerImageTag: '$(Build.BuildId)'
   - stage: HML
     dependsOn:
     - QA
