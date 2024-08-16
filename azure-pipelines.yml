@@ -11,10 +11,11 @@ pool:
 
 stages:
   - stage: Build
-    jobs: Build and push image
-      - job: 
+    displayName: Build and push image
+    jobs:
+      - job:
         steps:
-          - task: Build image
+          - task: Docker@2
             inputs:
               containerRegistry: 'Docker Hub'
               repository: 'victorb96/gf-controle-acesso'
@@ -25,7 +26,7 @@ stages:
                 $(Build.BuildId)
                 latest
               arguments: '--build-arg DB_HOST=$(DB_HOST) --build-arg DB_NAME=$(DB_NAME) --build-arg DB_PORT=$(DB_PORT) --build-arg DB_USER=$(DB_USER) --build-arg DB_PWD=$(DB_PWD) --build-arg JWT_CONTROLE_ACESSO_KEY=$(JWT_CONTROLE_ACESSO_KEY)'
-          - task: Push image
+          - task: Docker@2
             inputs:
               containerRegistry: 'Docker Hub'
               repository: 'victorb96/gf-controle-acesso'
