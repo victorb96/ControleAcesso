@@ -13,7 +13,7 @@ stages:
   - stage: Build
     displayName: CI
     jobs:
-      - job: Test
+      - job: Dotnet
         steps:
           - task: DotNetCoreCLI@2
             displayName: Restore
@@ -27,8 +27,9 @@ stages:
               command: 'build'
               projects: '**/*.csproj'
               arguments: '--configuration Release'
-      - job:
-        dependsOn: Test
+      - job: Docker
+        dependsOn:
+        - Dotnet
         steps:
           - task: Docker@2
             displayName: Build Image
