@@ -13,6 +13,18 @@ stages:
   - stage: Build
     displayName: Build and push image
     jobs:
+      - job: 
+        steps:
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'restore'
+              projects: '**/*.csproj'
+              feedsToUse: 'select'
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'build'
+              projects: '**/*.csproj'
+              arguments: '--configuration Release'
       - job:
         steps:
           - task: Docker@2
