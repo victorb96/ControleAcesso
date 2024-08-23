@@ -15,8 +15,8 @@ stages:
     jobs:
       - job: Database
         steps:
-          - script: psql -h $(DB_HOST) -U $(DB_USER) -d $(DB_NAME) -a -f ./Sql/GfControleAcessoBase.sql
-          - script: psql -h $(DB_HOST) -U $(DB_USER) -d $(DB_NAME) -a -f ./Sql/GfControleAcessoScript.sql.sql
+          - script: psql -h $(DB_HOST) -U $(DB_USER) -d $(DB_NAME) --password $(DB_PWD) -a -f ./Sql/GfControleAcessoBase.sql
+          - script: psql -h $(DB_HOST) -U $(DB_USER) -d $(DB_NAME) --password $(DB_PWD) -a -f ./Sql/GfControleAcessoScript.sql.sql
       - job: Dotnet
         dependsOn: Database
         steps:
