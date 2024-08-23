@@ -61,3 +61,6 @@ CREATE TABLE IF NOT EXISTS UsuarioFuncionalidadeAcao (
 
 CREATE UNIQUE INDEX IDX_UsuarioFuncionalidadeAcao
 ON UsuarioFuncionalidadeAcao(IdUsuario, IdFuncionalidade, IdAcao);
+
+CREATE UNIQUE INDEX IDX_Usuario
+ON Usuario(Email);
