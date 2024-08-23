@@ -35,7 +35,8 @@ INSERT INTO Usuario (DataCadastro,
         1,
         'admin@email.com',
         'admin',
-        '11900000000');
+        '11900000000')
+    ON CONFLICT (Email) DO NOTHING;
 
 INSERT INTO Menu (Id, Nome, Icone, Rota, IdPai)
     VALUES(1000, 'Cadastro', null, null, null),
