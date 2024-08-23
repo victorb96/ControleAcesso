@@ -14,12 +14,11 @@ stages:
     displayName: CI
     jobs:
       - job: Database
-        dependsOn:
-        - Docker
         steps:
           - script: psql -h $(DB_HOST) -U $(DB_USER) -d $(DB_NAME) -a -f ./Sql/GfControleAcessoBase.sql
           - script: psql -h $(DB_HOST) -U $(DB_USER) -d $(DB_NAME) -a -f ./Sql/GfControleAcessoScript.sql.sql
       - job: Dotnet
+        dependsOn: Database
         steps:
           - task: DotNetCoreCLI@2
             displayName: Restore
