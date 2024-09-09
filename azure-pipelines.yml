@@ -6,8 +6,7 @@
 trigger:
   branches:
     include:
-      - dev
-      - main
+      - '*'
 
 pool:
   vmImage: ubuntu-latest
@@ -61,6 +60,7 @@ stages:
                 $(Build.BuildId)
                 latest
   - stage: QA
+    condition: eq(variables['Build.SourceBranchName'], 'dev')
     dependsOn:
     - Build
     jobs:
