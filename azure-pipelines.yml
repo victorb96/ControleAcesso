@@ -35,6 +35,7 @@ stages:
               projects: '**/*.csproj'
               arguments: '--configuration Release'
       - job: Docker
+        condition: or(eq(variables['Build.SourceBranchName'], 'dev'), eq(variables['Build.SourceBranchName'], 'main'))
         dependsOn:
         - Dotnet
         steps:
