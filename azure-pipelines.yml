@@ -4,7 +4,9 @@
 # https://aka.ms/yaml
 
 trigger:
-- dev
+  branches:
+    include:
+      - '*'
 
 pool:
   vmImage: ubuntu-latest
@@ -74,8 +76,7 @@ stages:
               DockerRepository: 'gf-controle-acesso'
               DockerImageTag: '$(Build.BuildId)'
   - stage: HML
-    dependsOn:
-    - QA
+    condition: eq(variables['Build.SourceBranchName'], 'main')
     jobs:
       - deployment: 
         environment: HML
