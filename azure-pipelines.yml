@@ -17,8 +17,8 @@ stages:
     jobs:
       - job: Database
         steps:
-          - script: psql postgresql://$(DB_USER):$(DB_PWD)@$(DB_HOST):$(DB_PORT)/postgres -f ./Sql/GfControleAcessoBase.sql
-          - script: psql postgresql://$(DB_USER):$(DB_PWD)@$(DB_HOST):$(DB_PORT)/postgres -f ./Sql/GfControleAcessoScript.sql
+          - script: psql postgresql://$(DB_USER):$(DB_PWD)@$(DB_HOST):$(DB_PORT)/postgres -f ./Src/Sql/GfControleAcessoBase.sql
+          - script: psql postgresql://$(DB_USER):$(DB_PWD)@$(DB_HOST):$(DB_PORT)/postgres -f ./Src/Sql/GfControleAcessoScript.sql
       - job: Dotnet
         dependsOn: Database
         steps:
