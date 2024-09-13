@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.App", "App\GF.ControleAcesso.App.csproj", "{D6A6D691-1365-45B4-975B-50E845F31B07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.App", "Src\App\GF.ControleAcesso.App.csproj", "{D6A6D691-1365-45B4-975B-50E845F31B07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.Domain", "Domain\GF.ControleAcesso.Domain.csproj", "{E6C2D1C0-F530-49E3-88A7-A70B906615F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.Domain", "Src\Domain\GF.ControleAcesso.Domain.csproj", "{E6C2D1C0-F530-49E3-88A7-A70B906615F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{EE4EC298-F25A-4222-A9FE-A0B54CC8B033}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.Infra.Data", "Infra\Data\GF.ControleAcesso.Infra.Data.csproj", "{461F9AAC-BF92-40E1-ACD8-26ACFFE2AE51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.Infra.Data", "Src\Infra\Data\GF.ControleAcesso.Infra.Data.csproj", "{461F9AAC-BF92-40E1-ACD8-26ACFFE2AE51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.Infra.CrossCutting", "Infra\CrossCutting\GF.ControleAcesso.Infra.CrossCutting.csproj", "{D3BB891F-1821-4890-A1B2-ACF782B37E8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.ControleAcesso.Infra.CrossCutting", "Src\Infra\CrossCutting\GF.ControleAcesso.Infra.CrossCutting.csproj", "{D3BB891F-1821-4890-A1B2-ACF782B37E8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
