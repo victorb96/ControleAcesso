@@ -18,4 +18,15 @@ public static class UsuarioValidation
         if(!usuario.Ativo)
             throw new Exception(mensagemErro);
     }
+
+    public static void ValidaUsuarioCadastro(Usuario usuario)
+    {
+        if(usuario == null)
+            throw new Exception("Dados do usuário inválidos");
+
+        if(!usuario.Email.IsValidEmail())
+            throw new Exception("Email inválido");
+
+        //Colocar mais validacoes
+    }
 }

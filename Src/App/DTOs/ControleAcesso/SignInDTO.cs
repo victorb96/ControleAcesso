@@ -1,4 +1,4 @@
-namespace GF.ControleAcesso.App.DTOs;
+namespace GF.ControleAcesso.App.DTOs.ControleAcesso;
 
 public class SignInRequestDTO
 {

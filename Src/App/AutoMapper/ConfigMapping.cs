@@ -1,5 +1,5 @@
 using AutoMapper;
-using GF.ControleAcesso.App.DTOs;
+using GF.ControleAcesso.App.DTOs.ControleAcesso;
 using GF.ControleAcesso.App.Services;
 using GF.ControleAcesso.Domain.Entities;
 using GF.ControleAcesso.Domain.Enums;
@@ -18,5 +18,6 @@ public class ConfigMapping : Profile
             .ForMember(dto => dto.Perfil, opt => opt.MapFrom(e => ((EPerfil)e.IdPerfil).GetEnumDescription()));
         CreateMap<SignInResponse, SignInResponseDTO>()
             .ForMember(dto => dto.Token, opt => opt.MapFrom(e => TokenService.GerarToken(e.Usuario)));
+        CreateMap<UsuarioCadastroDTO, Usuario>();
     }
 }

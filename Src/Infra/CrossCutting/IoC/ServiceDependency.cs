@@ -11,6 +11,7 @@ public class ServiceDependency
     public static void AddServiceDependency(IServiceCollection services)
     {
         services.AddScoped<ISignInService, SignInService> ();
+        services.AddScoped<IUsuarioService, UsuarioService> ();
 
         services.AddScoped<IUsuarioRepository, UsuarioRepository> ();
         services.AddScoped<IMenuRepository, MenuRepository> ();
