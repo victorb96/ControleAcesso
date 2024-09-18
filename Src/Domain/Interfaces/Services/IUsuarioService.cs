@@ -2,7 +2,7 @@ using GF.ControleAcesso.Domain.Entities;
 
 namespace GF.ControleAcesso.Domain.Interfaces.Services;
 
-public interface ISignInService
+public interface IUsuarioService
 {
-    SignInResponse SignIn(Usuario request);
+    int Adicionar(Usuario usuario);
 }

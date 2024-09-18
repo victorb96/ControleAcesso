@@ -1,10 +1,10 @@
 using AutoMapper;
-using GF.ControleAcesso.App.DTOs;
+using GF.ControleAcesso.App.DTOs.ControleAcesso;
 using GF.ControleAcesso.Domain.Entities;
 using GF.ControleAcesso.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GF.ControleAcesso.App.Controllers;
+namespace GF.ControleAcesso.App.Controllers.ControleAcesso;
 
 [ApiController]
 [Route("[controller]")]
