@@ -24,13 +24,30 @@ public class UsuarioController : Controller
     }
 
     [HttpPost]
-    public IActionResult Adicionar(UsuarioCadastroDTO request)
+    public async Task<IActionResult> Adicionar(UsuarioCadastroDTO request)
     {
-        try{
+        try
+        {
             var idUsuario = _usuarioService.Adicionar(_mapper.Map<Usuario>(request));
             return Ok(new { Id = idUsuario });
-        }catch(Exception ex){
-            return BadRequest(new {success = false, message = ex.Message});
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
+    }
+
+    [HttpPost("cadastrar-senha")]
+    public async Task<IActionResult> CadastrarSenha(UsuarioSenhaDTO request)
+    {
+        try
+        {
+            _usuarioService.AdicionarSenha(_mapper.Map<Usuario>(request));
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { success = false, message = ex.Message });
         }
     }
 }

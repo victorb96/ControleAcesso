@@ -24,6 +24,7 @@ public static class TokenService
                 new (ClaimTypes.Role, ((EPerfil)user.IdPerfil).GetEnumDescription()),
             }),
             Expires = DateTime.UtcNow.AddHours(12),
+            Issuer = System.Net.Dns.GetHostName(),
             SigningCredentials =
             new SigningCredentials(
                 new SymmetricSecurityKey(key),

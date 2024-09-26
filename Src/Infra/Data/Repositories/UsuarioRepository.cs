@@ -9,14 +9,13 @@ public class UsuarioRepository : Base, IUsuarioRepository
 {
     private readonly string TABELA = "Usuario";
     private DynamicParameters parameters = new DynamicParameters();
-    public Usuario? ObterPorEmailSenha(string email, string senha)
+    public Usuario? ObterPorEmail(string email)
     {
         parameters.Add("@email", email);
-        parameters.Add("@senha", senha);
 
         using (NpgsqlConnection connection = new NpgsqlConnection(GetConnectionString()))
         {
-            string sql = $@"SELECT * FROM {TABELA} WHERE Email = @email AND Senha = @senha";
+            string sql = $@"SELECT * FROM {TABELA} WHERE Email = @email LIMIT 1";
             return connection.Query<Usuario>(sql, parameters).FirstOrDefault();
         }
     }

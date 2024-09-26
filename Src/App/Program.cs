@@ -21,9 +21,12 @@ builder.Services.AddAuthentication(x =>
         x.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
+            ValidateIssuer = true,
+            ValidateLifetime = true,
+            ValidateAudience = false,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_CONTROLE_ACESSO_KEY"))),
-            ValidateIssuer = false,
-            ValidateAudience = false
+            ValidIssuer = System.Net.Dns.GetHostName(),
+            ClockSkew = TimeSpan.Zero
         };
     });
 

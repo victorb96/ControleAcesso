@@ -5,7 +5,7 @@ namespace GF.ControleAcesso.Domain.Validators;
 
 public static class UsuarioValidation
 {
-    public static void ValidaUsuarioSignIn(Usuario usuario)
+    public static void ValidaUsuarioSignIn(Usuario usuario, Usuario request)
     {
         string mensagemErro = "Email e/ou Senha inválidos";
 
@@ -16,6 +16,9 @@ public static class UsuarioValidation
             throw new Exception(mensagemErro);
 
         if(!usuario.Ativo)
+            throw new Exception(mensagemErro);
+
+        if(!HashService.SenhaValida(request.Senha, usuario.Senha))
             throw new Exception(mensagemErro);
     }
 

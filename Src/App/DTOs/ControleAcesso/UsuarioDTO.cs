@@ -26,3 +26,9 @@ public class UsuarioCadastroDTO
     public string Email { get; set; } = string.Empty;
     public string Celular { get; set; } = string.Empty;
 }
+
+public class UsuarioSenhaDTO
+{
+    public string Hash { get; set; } = string.Empty;
+    public string Senha { get; set; } = string.Empty;
+}

@@ -19,4 +19,9 @@ public class UsuarioService : IUsuarioService
         UsuarioValidation.ValidaUsuarioCadastro(usuario);
         return _usuarioRepository.Adicionar(usuario);
     }
+
+    public void AdicionarSenha(Usuario usuario)
+    {
+        UsuarioValidation.ValidaUsuarioCadastro(usuario);
+    }
 }
