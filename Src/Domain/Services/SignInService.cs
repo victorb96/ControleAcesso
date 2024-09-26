@@ -18,9 +18,9 @@ public class SignInService : ISignInService
 
     public SignInResponse SignIn(Usuario request)
     {
-        var usuario = _usuarioRepository.ObterPorEmailSenha(request.Email, request.Senha);
+        var usuario = _usuarioRepository.ObterPorEmail(request.Email);
 
-        UsuarioValidation.ValidaUsuarioSignIn(usuario);
+        UsuarioValidation.ValidaUsuarioSignIn(usuario, request);
 
         var menu = _menuRepository.ObterMenusUsuario(usuario.Id);
 

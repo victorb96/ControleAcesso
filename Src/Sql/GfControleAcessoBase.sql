@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS Usuario (
     Complemento VARCHAR(200) NULL,
     IdPerfil INTEGER NOT NULL,
     Email VARCHAR(200) NOT NULL,
-    Senha VARCHAR(35),
+    Senha VARCHAR(150),
     Celular VARCHAR(11),
     CONSTRAINT FK_Perfil_Usuario FOREIGN KEY(IdPerfil) REFERENCES Perfil(Id)
 );
@@ -64,3 +64,12 @@ ON UsuarioFuncionalidadeAcao(IdUsuario, IdFuncionalidade, IdAcao);
 
 CREATE UNIQUE INDEX IDX_Usuario
 ON Usuario(Email);
+
+CREATE TABLE IF NOT EXISTS UsuarioHash (
+    Id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    DataCadastro TIMESTAMP NOT NULL,
+    DataExpiracao TIMESTAMP NOT NULL,
+    IdUsuario INTEGER NOT NULL,
+    HashStr VARCHAR(32) NOT NULL,
+    CONSTRAINT FK_Usuario_UsuarioHash FOREIGN KEY (IdUsuario) REFERENCES Usuario(Id)
+);

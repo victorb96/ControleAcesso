@@ -34,7 +34,7 @@ INSERT INTO Usuario (DataCadastro,
         '', 
         1,
         'admin@email.com',
-        'admin',
+        '$2a$12$XwzYRTelipQEbgnPHtdAvufAb4bEMIrj33t5Mtd7Lp5WYD.3nlnZe',
         '11900000000')
     ON CONFLICT (Email) DO NOTHING;
 
