@@ -1,6 +1,6 @@
+using GF.ControleAcesso.Application.Services;
 using GF.ControleAcesso.Domain.Interfaces.Repositories;
 using GF.ControleAcesso.Domain.Interfaces.Services;
-using GF.ControleAcesso.Domain.Services;
 using GF.ControleAcesso.Infra.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 

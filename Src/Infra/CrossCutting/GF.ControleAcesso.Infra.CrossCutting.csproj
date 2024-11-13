@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <ProjectReference Include="..\..\Application\GF.ControleAcesso.Application.csproj" />
     <ProjectReference Include="..\..\Domain\GF.ControleAcesso.Domain.csproj" />
     <ProjectReference Include="..\Data\GF.ControleAcesso.Infra.Data.csproj" />
   </ItemGroup>
