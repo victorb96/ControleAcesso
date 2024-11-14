@@ -28,7 +28,7 @@ public class UsuarioController : Controller
     {
         try
         {
-            var idUsuario = _usuarioService.Adicionar(_mapper.Map<Usuario>(request));
+            var idUsuario = await _usuarioService.Adicionar(_mapper.Map<Usuario>(request));
             return Ok(new { Id = idUsuario });
         }
         catch (Exception ex)
@@ -42,7 +42,7 @@ public class UsuarioController : Controller
     {
         try
         {
-            _usuarioService.AdicionarSenha(_mapper.Map<Usuario>(request));
+            await _usuarioService.AdicionarSenha(_mapper.Map<Usuario>(request));
             return Ok();
         }
         catch (Exception ex)

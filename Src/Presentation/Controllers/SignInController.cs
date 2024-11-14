@@ -22,11 +22,11 @@ public class SignInController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult SignIn(SignInRequestDTO request)
+    public async Task<IActionResult> SignIn(SignInRequestDTO request)
     {
         try
         {
-            var response = _mapper.Map<SignInResponseDTO>(_signInService.SignIn(_mapper.Map<Usuario>(request)));
+            var response = _mapper.Map<SignInResponseDTO>(await _signInService.SignIn(_mapper.Map<Usuario>(request)));
             return Ok(response);
         }
         catch (Exception ex)

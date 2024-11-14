@@ -16,7 +16,7 @@ public class SignInService : ISignInService
         _menuRepository = menuRepository;
     }
 
-    public SignInResponse SignIn(Usuario request)
+    public Task<SignInResponse> SignIn(Usuario request)
     {
         var usuario = _usuarioRepository.ObterPorEmail(request.Email);
 
@@ -24,7 +24,7 @@ public class SignInService : ISignInService
 
         var menu = _menuRepository.ObterMenusUsuario(usuario.Id);
 
-        return new SignInResponse
+        var response = new SignInResponse
         {
             Usuario = usuario,
             Menu = menu.Where(m => !m.IdPai.HasValue).Select(m => new MenuResponse
@@ -42,5 +42,7 @@ public class SignInService : ISignInService
                 }).ToList()
             }).ToList()
         };
+        
+        return Task.FromResult(response);
     }
 }

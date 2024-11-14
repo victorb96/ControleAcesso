@@ -14,14 +14,16 @@ public class UsuarioService : IUsuarioService
         _usuarioRepository = usuarioRepository;
     }
 
-    public int Adicionar(Usuario usuario)
+    public Task<int> Adicionar(Usuario usuario)
     {
         UsuarioValidation.ValidaUsuarioCadastro(usuario);
-        return _usuarioRepository.Adicionar(usuario);
+        return Task.FromResult(_usuarioRepository.Adicionar(usuario));
     }
 
-    public void AdicionarSenha(Usuario usuario)
+    public async Task AdicionarSenha(Usuario usuario)
     {
         UsuarioValidation.ValidaUsuarioCadastro(usuario);
+
+        //return Task.FromResult(new { Teste = 1 });
     }
 }
