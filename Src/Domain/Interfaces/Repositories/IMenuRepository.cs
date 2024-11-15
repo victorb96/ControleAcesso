@@ -4,5 +4,5 @@ namespace GF.ControleAcesso.Domain.Interfaces.Repositories;
 
 public interface IMenuRepository
 {
-    IEnumerable<Menu> ObterMenusUsuario(int idUsuario);
+    Task<IEnumerable<Menu>> ObterMenusUsuario(int idUsuario);
 }

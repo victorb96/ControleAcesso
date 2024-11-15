@@ -16,15 +16,15 @@ public class SignInService : ISignInService
         _menuRepository = menuRepository;
     }
 
-    public Task<SignInResponse> SignIn(Usuario request)
+    public async Task<SignInResponse> SignIn(Usuario request)
     {
-        var usuario = _usuarioRepository.ObterPorEmail(request.Email);
+        var usuario = await _usuarioRepository.ObterPorEmail(request.Email);
 
         UsuarioValidation.ValidaUsuarioSignIn(usuario, request);
 
-        var menu = _menuRepository.ObterMenusUsuario(usuario.Id);
+        var menu = await _menuRepository.ObterMenusUsuario(usuario.Id);
 
-        var response = new SignInResponse
+        return new SignInResponse
         {
             Usuario = usuario,
             Menu = menu.Where(m => !m.IdPai.HasValue).Select(m => new MenuResponse
@@ -42,7 +42,5 @@ public class SignInService : ISignInService
                 }).ToList()
             }).ToList()
         };
-        
-        return Task.FromResult(response);
     }
 }

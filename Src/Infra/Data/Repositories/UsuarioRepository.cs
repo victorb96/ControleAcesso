@@ -9,18 +9,18 @@ public class UsuarioRepository : Base, IUsuarioRepository
 {
     private readonly string TABELA = "Usuario";
     private DynamicParameters parameters = new DynamicParameters();
-    public Usuario? ObterPorEmail(string email)
+    public async Task<Usuario?> ObterPorEmail(string email)
     {
         parameters.Add("@email", email);
 
         using (NpgsqlConnection connection = new NpgsqlConnection(GetConnectionString()))
         {
             string sql = $@"SELECT * FROM {TABELA} WHERE Email = @email LIMIT 1";
-            return connection.Query<Usuario>(sql, parameters).FirstOrDefault();
+            return await connection.QueryFirstOrDefaultAsync<Usuario>(sql, parameters);
         }
     }
 
-    public int Adicionar(Usuario usuario)
+    public async Task<int> Adicionar(Usuario usuario)
     {
         parameters.Add("@Nome", usuario.Nome);
         parameters.Add("@Cpf", usuario.Cpf);
@@ -72,7 +72,7 @@ public class UsuarioRepository : Base, IUsuarioRepository
                             )
                             RETURNING Id;";
                             
-            return connection.Query<int>(sql, parameters).FirstOrDefault();
+            return await connection.QueryFirstOrDefaultAsync<int>(sql, parameters);
         }
     }
 }

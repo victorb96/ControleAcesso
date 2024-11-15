@@ -10,7 +10,7 @@ public class MenuRepository : Base, IMenuRepository
 {
     private readonly string TABELA = "Menu";
     private DynamicParameters parameters = new DynamicParameters();
-    public IEnumerable<Menu> ObterMenusUsuario(int idUsuario)
+    public async Task<IEnumerable<Menu>> ObterMenusUsuario(int idUsuario)
     {
         parameters.Add("@idUsuario", idUsuario);
         parameters.Add("@idAcaoConsultar", (int)EAcao.Consultar);
@@ -40,7 +40,7 @@ public class MenuRepository : Base, IMenuRepository
             ORDER BY Id
             ";
 
-            return connection.Query<Menu>(sql, parameters);
+            return await connection.QueryAsync<Menu>(sql, parameters);
         }
     }
 }

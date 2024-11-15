@@ -4,6 +4,6 @@ namespace GF.ControleAcesso.Domain.Interfaces.Repositories;
 
 public interface IUsuarioRepository
 {
-    Usuario? ObterPorEmail(string email);
-    int Adicionar(Usuario usuario);
+    Task<Usuario?> ObterPorEmail(string email);
+    Task<int> Adicionar(Usuario usuario);
 }
