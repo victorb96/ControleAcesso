@@ -27,5 +27,5 @@ ENV JWT_CONTROLE_ACESSO_KEY=$JWT_CONTROLE_ACESSO_KEY
 
 WORKDIR /App
 COPY --from=build-env /App/out .
-ENTRYPOINT ["dotnet", "GF.ControleAcesso.App.dll"]
+ENTRYPOINT ["dotnet", "GF.ControleAcesso.Presentation.dll"]
 EXPOSE 8080
