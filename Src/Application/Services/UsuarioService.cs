@@ -16,13 +16,16 @@ public class UsuarioService : IUsuarioService
 
     public async Task<int> Adicionar(Usuario usuario)
     {
-        UsuarioValidation.ValidaUsuarioCadastro(usuario);
+        var validationResult = new UsuarioCadastroValidation().Validate(usuario);
+        if(!validationResult.IsValid)
+            throw new Exception(validationResult.ToString());
+        
         return await _usuarioRepository.Adicionar(usuario);
     }
 
     public async Task AdicionarSenha(Usuario usuario)
     {
-        UsuarioValidation.ValidaUsuarioCadastro(usuario);
+        //UsuarioValidation.ValidaUsuarioCadastro(usuario);
 
         //return Task.FromResult(new { Teste = 1 });
     }

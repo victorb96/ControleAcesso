@@ -10,10 +10,17 @@ public class ServiceDependency
 {
     public static void AddServiceDependency(IServiceCollection services)
     {
+        #region Services
         services.AddScoped<ISignInService, SignInService> ();
         services.AddScoped<IUsuarioService, UsuarioService> ();
+        #endregion
+        
+        #region Validators
+        #endregion
 
+        #region Repositories
         services.AddScoped<IUsuarioRepository, UsuarioRepository> ();
         services.AddScoped<IMenuRepository, MenuRepository> ();
+        #endregion
     }
 }

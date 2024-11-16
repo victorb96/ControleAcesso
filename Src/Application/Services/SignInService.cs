@@ -20,7 +20,12 @@ public class SignInService : ISignInService
     {
         var usuario = await _usuarioRepository.ObterPorEmail(request.Email);
 
-        UsuarioValidation.ValidaUsuarioSignIn(usuario, request);
+        if (usuario == null)
+            throw new Exception("Email e/ou Senha inválidos");
+        
+        var validatorResult = new SignInValidation(request.Senha).Validate(usuario);
+        if (!validatorResult.IsValid)
+            throw new Exception(validatorResult.ToString());
 
         var menu = await _menuRepository.ObterMenusUsuario(usuario.Id);
 
