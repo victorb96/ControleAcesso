@@ -4,5 +4,5 @@ namespace GF.ControleAcesso.Domain.Interfaces.Services;
 
 public interface ISignInService
 {
-    SignInResponse SignIn(Usuario request);
+    Task<SignInResponse> SignIn(Usuario request);
 }
