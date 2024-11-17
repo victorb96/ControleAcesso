@@ -70,7 +70,7 @@ stages:
             displayName: Deploy QA
             inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: 'Assinatura do Azure 1(26954947-37d0-4d54-bbcb-0cb38650264d)'
+              azureSubscription: 'Assinatura do Azure 1(1)(26954947-37d0-4d54-bbcb-0cb38650264d)'
               appType: 'webAppContainer'
               WebAppName: 'gf-controle-acesso'
               DockerNamespace: 'victorb96'
