@@ -1,3 +1,4 @@
+using GF.ControleAcesso.Application.Helpers;
 using GF.ControleAcesso.Application.Validators;
 using GF.ControleAcesso.Domain.Entities;
 using GF.ControleAcesso.Domain.Interfaces.Repositories;
@@ -18,14 +19,14 @@ public class SignInService : ISignInService
 
     public async Task<SignInResponse> SignIn(Usuario request)
     {
-        var usuario = await _usuarioRepository.ObterPorEmail(request.Email);
-
-        if (usuario == null)
-            throw new Exception("Email e/ou Senha inválidos");
-        
-        var validatorResult = new SignInValidation(request.Senha).Validate(usuario);
+        var validatorResult = new UsuarioSigninValidation().Validate(request);
         if (!validatorResult.IsValid)
             throw new Exception(validatorResult.ToString());
+
+        var usuario = await _usuarioRepository.ObterPorEmail(request.Email);
+
+        if (usuario == null || !HashService.SenhaValida(request.Senha, usuario.Senha) || !usuario.Ativo)
+            throw new Exception("Email e/ou Senha inválidos");
 
         var menu = await _menuRepository.ObterMenusUsuario(usuario.Id);
 

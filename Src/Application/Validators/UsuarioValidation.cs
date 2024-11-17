@@ -1,5 +1,4 @@
 using FluentValidation;
-using GF.ControleAcesso.Application.Helpers;
 using GF.ControleAcesso.Domain.Entities;
 using GF.ControleAcesso.Domain.Enums;
 
@@ -113,15 +112,28 @@ public class UsuarioCadastroValidation : AbstractValidator<Usuario>
             .EmailAddress()
             .MaximumLength(200)
             .WithMessage("Email e/ou Senha inválidos");
-        // RuleFor(u => u.Senha)
-        //     .NotNull()
-        //     .NotEmpty()
-        //     .MinimumLength(8)
-        //     .MaximumLength(150)
-        //     .Matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,150}$")
-        //     .WithMessage("Senha inválida");
         RuleFor(u => u.Celular)
             .MaximumLength(11)
             .WithMessage("Celular inválido");
+    }
+}
+
+public class UsuarioSigninValidation : AbstractValidator<Usuario>
+{
+    public UsuarioSigninValidation()
+    {
+        RuleFor(u => u.Email)
+            .NotNull()
+            .NotEmpty()
+            .EmailAddress()
+            .MaximumLength(200)
+            .WithMessage("Email e/ou Senha inválidos");
+        RuleFor(u => u.Senha)
+            .NotNull()
+            .NotEmpty()
+            //.MinimumLength(8)
+            .MaximumLength(150)
+            //.Matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,150}$")
+            .WithMessage("Email e/ou Senha inválidos");
     }
 }

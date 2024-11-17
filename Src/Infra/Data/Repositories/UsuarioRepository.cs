@@ -34,14 +34,12 @@ public class UsuarioRepository : Base, IUsuarioRepository
         parameters.Add("@IdPerfil", usuario.IdPerfil);
         parameters.Add("@Email", usuario.Email);
         parameters.Add("@Celular", usuario.Celular);
-        parameters.Add("@Ativo", usuario.Ativo);
 
         using (NpgsqlConnection connection = new NpgsqlConnection(GetConnectionString()))
         {
             string sql = $@"
                             INSERT INTO {TABELA}(
                                 DataCadastro,
-                                Ativo,
                                 Nome,
                                 Cpf,
                                 Cep,
@@ -56,7 +54,6 @@ public class UsuarioRepository : Base, IUsuarioRepository
                                 Celular
                             ) VALUES(
                                 NOW(),
-                                @Ativo,
                                 @Nome,
                                 @Cpf,
                                 @Cep,
