@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "GF_ControleAcesso_Jobs": {
-      "commandName": "Project",
-      "commandLineArgs": "--port 7141",
-      "launchBrowser": false
-    }
-  }
-}
