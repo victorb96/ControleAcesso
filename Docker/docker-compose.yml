@@ -1,5 +1,6 @@
 services:
   gf-controle-acesso-db:
+    container_name: gf-controle-acesso-db
     image: postgres:16.4
     restart: always
     environment:
@@ -12,6 +13,7 @@ services:
       - "5432:5432"
 
   gf-controle-acesso-api:
+    container_name: gf-controle-acesso-api
     build:
       context: ./../
     environment:
