@@ -13,8 +13,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Execute SQL Scripts
         run: |
-          psql postgresql://$DB_USER:$DB_PWD@$DB_HOST:$DB_PORT/postgres -f ControleAcesso/Src/Sql/GfControleAcessoBase.sql
-          psql postgresql://$DB_USER:$DB_PWD@$DB_HOST:$DB_PORT/postgres -f ControleAcesso/Src/Sql/GfControleAcessoScript.sql
+          psql postgresql://$DB_USER:$DB_PWD@$DB_HOST:$DB_PORT/postgres -f ./Src/Sql/GfControleAcessoBase.sql
+          psql postgresql://$DB_USER:$DB_PWD@$DB_HOST:$DB_PORT/postgres -f ./Src/Sql/GfControleAcessoScript.sql
     env:
       DB_USER: ${{ secrets.DB_USER }}
       DB_PWD: ${{ secrets.DB_PWD }}
