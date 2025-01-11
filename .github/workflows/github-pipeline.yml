@@ -39,7 +39,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: Build Docker image
         run: |
           docker build -t victorb96/gf-controle-acesso:${{ github.run_id }} -t victorb96/gf-controle-acesso:latest .
